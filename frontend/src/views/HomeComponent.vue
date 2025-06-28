@@ -6,39 +6,24 @@
       <v-container class="">
         <v-row class="cus-upper-level" dense>
 
-          <v-col cols="12" sm="6" class="d-flex justify-center align-center ">
-            <div>
-              <div class="text-white font-weight-bold text-h3">
+          <v-carousel hide-delimiters>
+            <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover></v-carousel-item>
+            <template v-slot:prev="{ props }">
+              <v-btn icon @click="props.onClick" style="background-color: #CD4257 !important; color: white;">
+                <v-icon>mdi-chevron-left</v-icon>
+              </v-btn>
+            </template>
 
-                Shop what you
-                <br />
-                desire...
-
-              </div>
-              <p class="text-white mt-4">
-                Discover stunning jewelry, premium skincare, stylish cosmetics, self-defense essentials, and trendy
-                bags—all in one place. At Mehek, we blend quality, style, and care to bring your desires to life.
-                Explore our collections and let your shopping journey be as delightful as your dreams.
-              </p>
-              <div>
-                <v-btn class="shopnow-btn" aria-label="Shop Now" text>
-                  <b>
-                    Shop Now!
-                  </b>
-                </v-btn>
-              </div>
-            </div>
-          </v-col>
-          <v-col cols="6">
-            <div class="d-flex justify-center items-center">
-              <img src="http://127.0.0.1:8000/images/promotional/promo.png" alt="promotional" class="promotional-image">
-            </div>
-          </v-col>
+            <template v-slot:next="{ props }">
+              <v-btn icon @click="props.onClick" style="background-color: #CD4257 !important; color: white;">
+                <v-icon>mdi-chevron-right</v-icon>
+              </v-btn>
+            </template>
+          </v-carousel>
 
         </v-row>
 
       </v-container>
-
 
     </div>
 
@@ -50,7 +35,7 @@
         <v-row gap="15">
           <v-col v-for="card in cards" :key="card.title" class="g-5" cols="12" md="4" sm="6">
             <router-link :to="`/object/list/1`" class="text-decoration-none">
-            <v-card class="cus-card">
+              <v-card class="cus-card">
                 <div>
                   <div class="d-flex justify-center items-center">
                     <v-img src="http://127.0.0.1:8000/images/promotional/promo.png" class="w-75" alt=""
@@ -169,6 +154,21 @@ const best_sellings = [
   { title: "Bags", src: "http://127.0.0.1:8000/images/promotional/promo.png" },
   { title: "Bags", src: "http://127.0.0.1:8000/images/promotional/promo.png" },
 ];
+
+const items = [
+  {
+    src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+  },
+  {
+    src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+  },
+  {
+    src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+  },
+  {
+    src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+  },
+]
 </script>
 
 <script>
@@ -196,8 +196,7 @@ export default {
 <style scoped>
 /* Hero Section */
 .cus-background {
-  background-color: #CD4257;
-  height: 80vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
